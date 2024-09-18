@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>TravelLogApp - Contact John</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/20cee36f21.js" crossorigin="anonymous"></script>
+    <script src="travel-services.js"></script>
+    <style>
+        .contact-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #5c0266;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .contact-info {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .contact-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+        .contact-details {
+            flex-grow: 1;
+        }
+        .contact-details h2 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .contact-details p {
+            margin: 5px 0;
+            color: #666;
+        }
+    </style>
+</head>
+<body></body>
+    <a href="TravelApp1.html">click on me to open second page</a>
+</body>
+
+<body>
+<!--Section Code For Header-->
+<header>
+    <header class="header_section">
+        <div class="header_left">
+            <div class="logo_container">
+                <i class="fa-solid fa-chevron-left"></i>
+                <h2>TravelLogApp</h2>
+                <i class="fa-regular fa-bookmark"></i>
+            </div>
+        </div>
+        <ul class="navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="ordering.html">Ordering</a></li>
+            <li><a href="#payment">Payment</a></li>
+            <li><a href="#review">Review</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </header>
+    <div class="top-btn"></div>
+</header>
+
+<!--Section Code For Contact-->
+<div class="body">
+    <div class="contact-container">
+        <h1>Gerald Salvador</h1>
+        <div class="contact-info">
+            <img src="images/Salvador1.png" alt="Salvador1 image">
+            <div class="contact-details">
+                <h2>Achukwi Gerald</h2>
+                <p><i class="fa-solid fa-phone"></i> Phone: +237(676333853)</p>
+                <p><i class="fa-solid fa-envelope"></i> Email: achukwigeraldsalvador.king@travellogapp.com</p>
+                <p><i class="fa-solid fa-briefcase"></i> Position: Travel Consultant</p>
+                <p><i class="fa-solid fa-clock"></i> Available: Mon-Fri, 9AM-5PM</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="body"></div>
+    <div class="contact-container">
+        <h1>Brain Suika</h1>
+        <div class="contact-info">
+            <img src="images/Brain3.png" alt="Brain profile" class="Brain-image">
+            <div class="contact-details">
+                <h2>Brain Suika</h2>
+                <p><i class="fa-solid fa-phone"></i> Phone: +237(676333853)</p>
+                <p><i class="fa-solid fa-envelope"></i> Email: Brainsuika.speco@travellogapp.com</p>
+                <p><i class="fa-solid fa-briefcase"></i> Position: Travel Consultant</p>
+                <p><i class="fa-solid fa-clock"></i> Available: Mon-Sat, 9AM-6PM</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Section Code For Footer-->
+<footer>
+    <p>&copy; 2024 TravelLogApp. All rights reserved.</p>
+</footer>
+
+<script>
+    // You can add any JavaScript specific to the contact page here
+    document.addEventListener('DOMContentLoaded', function() {
+        // Function to validate the contact form
+        function validateForm(event) {
+            event.preventDefault();
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var message = document.getElementById('message').value;
+            var errorMessage = document.getElementById('error-message');
+
+            if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
+                errorMessage.textContent = 'Please fill in all fields.';
+                return false;
+            }
+
+            if (!isValidEmail(email)) {
+                errorMessage.textContent = 'Please enter a valid email address.';
+                return false;
+            }
+
+            // If validation passes, you can submit the form or perform other actions
+            errorMessage.textContent = '';
+            alert('Form submitted successfully!');
+            // You would typically send the form data to a server here
+        }
+
+        // Helper function to validate email
+        function isValidEmail(email) {
+            var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        // Function to copy contact information to clipboard
+        function copyContactInfo(info) {
+            navigator.clipboard.writeText(info).then(function() {
+                alert('Copied to clipboard: ' + info);
+            }, function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        }
+
+        // Add event listeners
+        var form = document.getElementById('contact-form');
+        if (form) {
+            form.addEventListener('submit', validateForm);
+        }
+
+        var copyButtons = document.querySelectorAll('.copy-info');
+        copyButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                var info = this.getAttribute('data-info');
+                copyContactInfo(info);
+            });
+        });
+    });
+</script>
+</body>
+</html>

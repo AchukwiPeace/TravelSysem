@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>TravelLogApp - OrderingService</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/20cee36f21.js" crossorigin="anonymous"></script>
+    <script src="travel-services.js"></script>
+</head>
+
+<body>
+    <a href="OrderingService.html">click on me to open second page</a>
+</body>
+
+<body>
+<!-- Updated Ordering Service section -->
+<header>
+    <div class="ordering-service">
+    <h2>Ordering Service</h2>
+    <div class="service-item" data-service="tea">
+        <img src="images/Tea1.png" alt="Tea1 image">
+        <p>Tea</p>
+        <button class="order-btn">Order</button>
+    </div>
+    <div class="service-item" data-service="cakes">
+        <img src="images/Cakes1.png" alt="Cakes1 image">
+        <p>Cakes</p>
+        <button class="order-btn">Order</button>
+    </div>
+    <div class="service-item" data-service="bread">
+        <img src="images/Bread.png" alt="Bread image">
+        <p>Bread</p>
+        <button class="order-btn">Order</button>
+    </div>
+    <div class="service-item" data-service="coffee">
+        <img src="images/Coffee2.png" alt="Coffee image">
+        <p>Coffee</p>
+        <button class="order-btn">Order</button>
+    </div>
+    <div class="service-item" data-service="juice">
+        <img src="images/Juice3.png" alt="Juice3 image">
+        <p>Juice</p>
+        <button class="order-btn">Order</button>
+    </div>
+    <div class="service-item" data-service="wine">
+        <img src="images/Wine2.png" alt="Wine2 image">
+        <p>Wine</p>
+        <button class="order-btn">Order</button>
+    </div>
+</div>
+
+
+    <!-- Updated Additional Services section -->
+    <div class="additional-services">
+        <h2>Additional Services</h2>
+        <button id="bookHotel">Book Hotel</button>
+        <button id="bookTaxi">Book Taxi</button>
+    </div>
+
+    <script>
+        // Ordering service functionality
+        const serviceItems = document.querySelectorAll('.service-item');
+        let lastOrderedItem = null;
+
+        serviceItems.forEach(item => {
+            const orderBtn = item.querySelector('.order-btn');
+            orderBtn.addEventListener('click', function() {
+                const selectedService = item.getAttribute('data-service');
+
+                if (lastOrderedItem === selectedService) {
+                    alert(`You already ordered ${selectedService}. Please order a different item.`);
+                } else {
+                    if (lastOrderedItem) {
+                        alert(`You have changed your order from ${lastOrderedItem} to ${selectedService}.`);
+                    } else {
+                        alert(`You have ordered: ${selectedService}`);
+                    }
+                    lastOrderedItem = selectedService;
+
+                    // Enable all items
+                    serviceItems.forEach(serviceItem => {
+                        serviceItem.style.opacity = '1';
+                        serviceItem.style.pointerEvents = 'auto';
+                    });
+
+                    // Disable the current item
+                    item.style.opacity = '0.5';
+                    item.style.pointerEvents = 'none';
+                }
+            });
+        });
+
+        // Hotel booking functionality
+        document.getElementById('bookHotel').addEventListener('click', function() {
+            const hotelName = prompt("Enter the name of the hotel you want to book:");
+            if (hotelName) {
+                const checkInDate = prompt("Enter your check-in date (YYYY-MM-DD):");
+                if (checkInDate) {
+                    alert(`You have booked ${hotelName} for check-in on ${checkInDate}. Enjoy your stay!`);
+                } else {
+                    alert("Booking cancelled. Please provide a valid check-in date.");
+                }
+            } else {
+                alert("Booking cancelled. Please provide a hotel name.");
+            }
+        });
+
+        // Taxi booking functionality
+        document.getElementById('bookTaxi').addEventListener('click', function() {
+            const pickupLocation = prompt("Enter your pickup location:");
+            if (pickupLocation) {
+                const destination = prompt("Enter your destination:");
+                if (destination) {
+                    alert(`You have booked a taxi from ${pickupLocation} to ${destination}. Your taxi will arrive shortly.`);
+                } else {
+                    alert("Booking cancelled. Please provide a valid destination.");
+                }
+            } else {
+                alert("Booking cancelled. Please provide a pickup location.");
+            }
+        });
+    </script>
+</body>
+</html>

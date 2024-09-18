@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelLogApp</title>
+    <script src="https://kit.fontawesome.com/20cee36f21.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #edf5c1;
+            margin: 0;
+            padding: 0;
+        }
+        .header_section {
+            background-color: #333;
+            color: rgb(149, 187, 193);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo_container {
+            display: flex;
+            align-items: center;
+        }
+        .logo_container h2 {
+            margin: 0 1rem;
+        }
+        .navbar {
+            list-style-type: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar li {
+            margin-left: 1rem;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+        }
+        .login-container, .booking-hotel, .booking-container {
+            background-color: white;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 500px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .login-container img, .booking-hotel img, .booking-container img {
+            max-width: 100%;
+            height: auto;
+        }
+        input[type="text"], input[type="password"], input[type="email"], input[type="date"] {
+            width: 100%;
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button, .book, .cancel, .Final {
+            background-color: #4CAF50;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 0.5rem 0;
+        }
+        button:hover, .book:hover, .cancel:hover, .Final:hover {
+            background-color: #45a049;
+        }
+        .complaint-dialog {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .complaint-content {
+            background-color: #f3bce6;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+        }
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close-button:hover {
+            color: black;
+        }
+    </style>
+</head>
+
+<body> </body>
+<body>
+    <header class="header_section">
+        <div class="logo_container">
+            <i class="fa-solid fa-chevron-left"></i>
+            <h2>TravelLogApp</h2>
+            <i class="fa-regular fa-bookmark"></i>
+        </div>
+        <ul class="navbar">
+            <li><a href="#Home">Home</a></li>
+            <li><a href="#Orderingservices">Services</a></li>
+            <li><a href="#payment">Payment</a></li>
+            <li><a href="#review">Review</a></li>
+            <li><a href="#contanct">Contact</a></li>
+            <li><a href="ordering.html">Ordering</a></li>
+        </ul>
+    </header>
+
+    <div class="plane-item" data-service="plane">
+        <img src="images/plane1.png" alt="plane1 image">
+        <h2>Login</h2>
+        <form>
+            <input type="text" name="username" placeholder="Username" required><br>
+            <input type="password" name="password" placeholder="Password" required><br>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+
+    <div class="booking-hotel">
+        <h2>Book Your Trip</h2>
+        <div class="booking-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Your Name">
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Your Email">
+            <label for="date">Date:</label>
+            <input type="date" id="date">
+            <button id="bookBtn">Book Now</button>
+        </div>
+        <div id="bookingResult"></div>
+    </div>
+
+    <div class="booking-container">
+        <div class="book-inner">
+            <div class="Hotel-item" data-service="cakes">
+                <img src="images/Hotel2.png" alt="Hotel2 image">
+            <p class="details">Travel Log provides safe journey and good customer service for all travelers and tourists, comfortable seats, and free WiFi on the plane for all passengers.</p>
+            <div class="price">
+                <p>Total Cost</p>
+                <h5>$899<span>/person</span></h5>
+            </div>
+            <div class="book">Book Now</div>
+            <div class="cancel">Cancel</div>
+        </div>
+        <div class="divider"></div>
+        <div class="method">
+            <p class="heading">Payment Method</p>
+            <div class="Visa-item" data-service="Visa">
+                <img src="images/Visa1.png" alt="Visa1 image">
+                <p class="card-number">**** **** 2345</p>
+            </div>
+            <p class="warning">Insufficient Balance</p>
+            <div class="Final">Configure Booking</div>
+        </div>
+    </div>
+
+    <div id="luggageTracking" class="luggage-tracking">
+        <h2>Luggage Tracking</h2>
+        <div class="luggage-form">
+            <input type="text" id="matriculeNumber" placeholder="Enter Matricule Number">
+            <button id="trackLuggage">Track Luggage</button>
+        </div>
+        <div id="trackingResult"></div>
+        <button id="reportMissingLuggage" class="report-btn">Report Missing Luggage</button>
+    </div>
+
+    <div id="complaintDialog" class="complaint-dialog">
+        <div class="complaint-content">
+            <span class="close-button">&times;</span>
+            <h2>Report Missing Luggage</h2>
+            <form id="complaintForm">
+                <input type="text" id="complaintName" placeholder="Your Name" required>
+                <input type="email" id="complaintEmail" placeholder="Your Email" required>
+                <input type="text" id="matricule" placeholder="Luggage Matricule Number" required>
+                <textarea id="description" placeholder="Description of the luggage" required></textarea>
+                <button type="submit">Submit Complaint</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Booking functionality
+        document.getElementById('bookBtn').addEventListener('click', function() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const date = document.getElementById('date').value;
+            const bookingDetails = `Name: ${name}<br>Email: ${email}<br>Date: ${date}`;
+
+            document.getElementById('bookingResult').innerHTML = `
+                <h2>Booking Successful!</h2>
+                <p>${bookingDetails}</p>
+            `;
+        });
+
+        // Simulated luggage database
+        const luggageDatabase = {
+            'ABC123': { owner: 'Gerald', status: 'In Transit' },
+            'HJK456': {owner:'Maxwell', status:'In Transit'},
+            'DEF678': { owner: 'Jane Smith', status: 'Delivered' },
+            'lMN891': {owner :'maxwell', status:'Delivered'},
+            'GHI789': { owner: 'Bob Johnson', status: 'Lost' }
+        };
+
+        // Luggage tracking functionality
+        document.getElementById('trackLuggage').addEventListener('click', function() {
+            const matricule = document.getElementById('matriculeNumber').value;
+            const result = document.getElementById('trackingResult');
+
+            if (luggageDatabase[matricule]) {
+                const luggage = luggageDatabase[matricule];
+                result.innerHTML = `Luggage belonging to ${luggage.owner} is currently ${luggage.status}.`;
+            } else {
+                result.innerHTML = 'Luggage not found. Please check the matricule number.';
+            }
+        });
+
+        // Complaint dialog functionality
+        const dialog = document.getElementById('complaintDialog');
+        const reportBtn = document.getElementById('reportMissingLuggage');
+        const closeBtn = document.getElementsByClassName('close-button')[0];
+
+        reportBtn.onclick = function() {
+            dialog.style.display = 'block';
+        }
+        closeBtn.onclick = function() {
+            dialog.style.display = 'none';
+        }
+        window.onclick = function(event) {
+            if (event.target == dialog) {
+                dialog.style.display = 'none';
+            }
+        }
+
+        // Handle complaint form submission
+        document.getElementById('complaintForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('complaintName').value;
+            const email = document.getElementById('complaintEmail').value;
+            const matricule = document.getElementById('matricule').value;
+            const description = document.getElementById('description').value;
+
+            // Here you would typically send this data to a server
+            console.log('Complaint submitted:', { name, email, matricule, description });
+
+            alert('Your complaint has been submitted. We will contact you soon.');
+            dialog.style.display = 'none';
+        });
+
+
+</body>
+</html>

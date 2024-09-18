@@ -1,0 +1,25 @@
+{
+    "name": "travel-log-app",
+    "version": "1.0.0",
+    "description": "A web application for booking travel and tracking luggage",
+    "main": "index.html",
+    "scripts": {
+"start": "live-server",
+"build": "echo 'Building the project...'",
+"test": "echo 'No tests specified' && exit 0"
+    },
+    "keywords": [
+"travel",
+"booking",
+"luggage",
+"web-app"
+    ],
+    "author": "Your Name",
+    "license": "MIT",
+    "devDependencies": {
+"live-server": "^1.2.1"
+    },
+    "dependencies": {
+"gsap": "^3.11.3"
+    }
+}
